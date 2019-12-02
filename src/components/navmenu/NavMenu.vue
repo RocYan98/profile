@@ -2,6 +2,9 @@
   <nav>
     <div class="wrapper">
       <div class="item">
+        <img src="@/assets/img/logo.png" alt="logo" style="height: 25px; width: 25px">
+      </div>
+      <div class="item">
         <router-link to="">个人信息</router-link>
       </div>
       <div class="item">

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="top">
-
+      <common-top></common-top>
     </div>
     <div class="head">
       <nav-menu></nav-menu>
@@ -10,18 +10,23 @@
 
     </div>
     <div class="foot">
-      foot
+      <common-footer></common-footer>
     </div>
   </div>
 </template>
 
 <script>
   import NavMenu from "../components/navmenu/NavMenu";
+  import CommonFooter from "../components/footer/Footer";
+  import CommonTop from "../components/top/Top";
+
 
   export default {
     name: "Main",
     components: {
       NavMenu,
+      CommonFooter,
+      CommonTop
     }
   }
 </script>
