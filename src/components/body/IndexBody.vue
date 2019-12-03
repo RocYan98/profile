@@ -5,7 +5,7 @@
       <h1 style="display: inline; font-size: 60px">{{ title }}</h1>
     </div>
     <div class="img">
-      <img :src="url" :alt="name" style="height: 95%">
+      <img :src="require('@/assets/img/index/' + name + '.png')" :alt="name" style="height: 95%">
     </div>
   </div>
 </template>
@@ -13,11 +13,6 @@
 <script>
   export default {
     name: "IndexBody",
-    data() {
-      return {
-        url: require('../../assets/img/' + this.name + '.png'),
-      }
-    },
     props: ['name', 'bgc', 'title']
   }
 </script>

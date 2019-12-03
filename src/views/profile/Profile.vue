@@ -44,7 +44,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    background: url('../../assets/img/background.jpg');
+    background: url('../../assets/img/profile/background.jpg');
   }
 
   .box {
@@ -54,6 +54,7 @@
     margin-bottom: 40px;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.2);
+    z-index: 998;
   }
 
   .left {
@@ -78,7 +79,7 @@
     width: 200px;
     margin-top: 80px;
     margin-bottom: 80px;
-    background: url("../../assets/img/head.jpg");
+    background: url("../../assets/img/profile/head.jpg");
     background-size: 200px;
     border-radius: 50%;
   }
