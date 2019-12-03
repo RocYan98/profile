@@ -7,7 +7,9 @@
       <div class="head">
         <nav-menu></nav-menu>
       </div>
-      <router-view></router-view>
+      <div style="flex: 1; width: 100%; display: flex; justify-content: center">
+        <router-view></router-view>
+      </div>
     </div>
     <div class="foot">
       <common-footer></common-footer>
@@ -58,9 +60,9 @@
   .body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
+    justify-items: center;
+    align-items: center;
     flex: 1;
   }
 

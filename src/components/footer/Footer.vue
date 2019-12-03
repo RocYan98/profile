@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="item">
-      17H034160236-严启鹏-17计算机H2-17857688070
+      17H034160236-严启鹏-17计算机H2-rocyan98@gmail.com
     </div>
     <div class="item">
       Copyright © 2019 Roc Yan 保留所有权利。

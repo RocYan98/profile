@@ -28,7 +28,6 @@
     flex-direction: column;
     width: 100%;
     height: 800px;
-    background: #eaeaec;
     align-items: center;
     justify-content: flex-start;
   }
