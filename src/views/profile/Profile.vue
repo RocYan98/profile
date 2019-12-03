@@ -12,11 +12,11 @@
 
 <style scoped>
   .wrapper {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     height: 100%;
     width: 60%;
-    align-self: center;
+    border: solid 1px;
+    margin: 40px;
   }
 
 </style>

@@ -5,4 +5,6 @@
 </template>
 
 <style>
+  html, body {
+  }
 </style>

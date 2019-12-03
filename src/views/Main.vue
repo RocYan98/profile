@@ -3,10 +3,10 @@
     <div class="top">
       <common-top></common-top>
     </div>
-    <div class="head">
-      <nav-menu></nav-menu>
-    </div>
     <div class="body">
+      <div class="head">
+        <nav-menu></nav-menu>
+      </div>
       <router-view></router-view>
     </div>
     <div class="foot">
@@ -50,7 +50,6 @@
     width: 100%;
     height: 44px;
     background: rgba(0, 0, 0, 0.8);
-    flex: none;
     position: sticky;
     top: 0px;
     z-index:999;
@@ -58,7 +57,9 @@
 
   .body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
     flex: 1;
   }
