@@ -6,9 +6,13 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/profile',
+    redirect: '/index',
     component: () => import("../views/Main"),
     children: [
+      {
+        path: '/index',
+        component: () => import("@/views/index/Index"),
+      },
       {
         path: '/profile',
         component: () => import("@/views/profile/Profile"),
@@ -28,10 +32,6 @@ const routes = [
       {
         path: '/education',
         component: () => import("@/views/education/Education"),
-      },
-      {
-        path: '/association',
-        component: () => import("@/views/association/Association"),
       },
       {
         path: '/login',
