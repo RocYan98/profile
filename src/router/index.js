@@ -12,30 +12,51 @@ const routes = [
       {
         path: '/index',
         component: () => import("@/views/index/Index"),
+        meta: {
+          title: "web前端开发"
+        }
       },
       {
         path: '/profile',
         component: () => import("@/views/profile/Profile"),
+        meta: {
+          title: "web前端开发 | 个人信息"
+        }
       },
       {
         path: '/prize',
         component: () => import("@/views/prize/Prize"),
+        meta: {
+          title: "web前端开发 | 获奖情况"
+        }
       },
       {
         path: '/hometown',
         component: () => import("@/views/hometown/Hometown"),
+        meta: {
+          title: "web前端开发 | 家乡介绍"
+        }
       },
       {
         path: '/hobby',
         component: () => import("@/views/hobby/Hobby"),
+        meta: {
+          title: "web前端开发 | 兴趣爱好"
+        }
       },
       {
         path: '/education',
         component: () => import("@/views/education/Education"),
+        meta: {
+          title: "web前端开发 | 求学经历"
+        }
       },
       {
         path: '/login',
         component: () => import("@/views/login/Login"),
+        meta: {
+          title: "web前端开发 | 登陆"
+        }
       }
     ]
   },
