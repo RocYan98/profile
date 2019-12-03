@@ -1,5 +1,8 @@
 <template>
   <div class="wrapper">
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%">
+      <b>web前端开发</b>
+    </div>
     <div style="margin-right: 50px">
       <el-button type="text" @click="open">登陆</el-button>
     </div>
@@ -21,7 +24,11 @@
   .wrapper {
     display: flex;
     height: 100%;
-    align-items: center;
     justify-content: flex-end;
+  }
+
+  b {
+    font-size: 30px;
+    color: #f5f5f7;
   }
 </style>
