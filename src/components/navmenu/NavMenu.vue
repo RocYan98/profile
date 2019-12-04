@@ -15,9 +15,6 @@
         <router-link to="/prize">获奖情况</router-link>
       </div>
       <div class="item">
-        <router-link to="/hobby">兴趣爱好</router-link>
-      </div>
-      <div class="item">
         <router-link to="/hometown">家乡介绍</router-link>
       </div>
     </div>

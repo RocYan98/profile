@@ -12,77 +12,33 @@
       <div class="section" style="height: 44px">
         <a name="primary"></a>
       </div>
-      <div class="edu-wrapper">
-        <dic class="item">
-          <div class="img">
-            <img src="@/assets/img/edu/env/primary.jpg" alt="primary">
-          </div>
-          <div class="info">
-            <b style="font-size: 40px;margin-bottom: 10px">海亮外国语学校</b>
-            <b style="font-size: 25px">诸暨-小学</b>
-            <a href="javacript:;" style="margin-top: 20px; text-decoration: none; font-size: 20px; color: #0066cc;">进一步了解
-              ></a>
-          </div>
-        </dic>
-      </div>
+      <edu-item name="primary" title="海亮外国语学校" pos="诸暨" sta="小学" index="0"></edu-item>
+
       <div class="section" style="height: 44px">
         <a name="middle"></a>
       </div>
-      <div class="edu-wrapper" style="background:#eaeaec;">
-        <dic class="item" style="justify-content: flex-end">
-          <div class="info">
-            <b style="font-size: 40px;margin-bottom: 10px">稠州中学</b>
-            <b style="font-size: 25px">义乌-初中</b>
-            <a href="javacript:;" style="margin-top: 20px; text-decoration: none; font-size: 20px; color: #0066cc;">进一步了解
-              ></a>
-          </div>
-          <div class="img">
-            <img src="@/assets/img/edu/env/middle.jpg" alt="middle">
-          </div>
-        </dic>
-      </div>
+      <edu-item name="middle" title="稠州中学" pos="义乌" sta="初中" index="1"></edu-item>
+
       <div class="section" style="height: 44px">
         <a name="high"></a>
       </div>
-      <div class="edu-wrapper">
-        <dic class="item">
-          <div class="img">
-            <img src="@/assets/img/edu/env/high.jpg" alt="high">
-          </div>
-          <div class="info">
-            <b style="font-size: 40px;margin-bottom: 10px">义乌二中</b>
-            <b style="font-size: 25px">义乌-高中</b>
-            <a href="javacript:;" style="margin-top: 20px; text-decoration: none; font-size: 20px; color: #0066cc;">进一步了解
-              ></a>
-          </div>
-        </dic>
-      </div>
+      <edu-item name="high" title="义乌二中" pos="义乌" sta="高中" index="2"></edu-item>
+
       <div class="section" style="height: 44px">
         <a name="university"></a>
       </div>
-      <div class="edu-wrapper" style="background:#eaeaec;">
-        <dic class="item" style="justify-content: flex-end">
-          <div class="info">
-            <b style="font-size: 40px;margin-bottom: 10px">中国计量大学</b>
-            <b style="font-size: 25px">杭州-大学</b>
-            <a href="javacript:;" style="margin-top: 20px; text-decoration: none; font-size: 20px; color: #0066cc;">进一步了解
-              ></a>
-          </div>
-          <div class="img">
-            <img src="@/assets/img/edu/env/university.jpg" alt="university">
-          </div>
-        </dic>
-      </div>
+      <edu-item name="university" title="中国计量大学" pos="杭州" sta="大学" index="3"></edu-item>
     </div>
   </div>
 </template>
 
 <script>
   import NavItem from "../../components/edu/NavItem";
+  import EduItem from "../../components/edu/EduItem";
 
   export default {
     name: "Education",
-    components: {NavItem},
+    components: {EduItem, NavItem},
     data() {
       return {
         active: 0,

@@ -38,13 +38,6 @@ const routes = [
         }
       },
       {
-        path: '/hobby',
-        component: () => import("@/views/hobby/Hobby"),
-        meta: {
-          title: "web前端开发 | 兴趣爱好"
-        }
-      },
-      {
         path: '/education',
         component: () => import("@/views/education/Education"),
         meta: {
