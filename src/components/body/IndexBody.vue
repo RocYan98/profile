@@ -1,7 +1,7 @@
 <template>
   <div class="in-wrapper" :style="{background: bgc}">
     <div class="item">
-      <svg-icon :name="name"></svg-icon>
+      <img :src="require('@/assets/icons/' + name + '.png')" :alt="name">
       <h1 style="display: inline; font-size: 60px">{{ title }}</h1>
     </div>
     <div class="img">
