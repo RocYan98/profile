@@ -1,5 +1,22 @@
 <template>
-
+  <div class="wrapper">
+    <el-carousel :interval="4000" type="card" height="500px">
+      <el-carousel-item>
+        <div class="item">
+          <b>test</b>
+        </div>
+      </el-carousel-item>
+      <el-carousel-item>
+        <img src="@/assets/img/edu/env/high.jpg" alt="test">
+      </el-carousel-item>
+      <el-carousel-item>
+        <img src="@/assets/img/edu/env/high.jpg" alt="test">
+      </el-carousel-item>
+      <el-carousel-item>
+        <img src="@/assets/img/edu/env/high.jpg" alt="test">
+      </el-carousel-item>
+    </el-carousel>
+  </div>
 </template>
 
 <script>
@@ -9,5 +26,29 @@
 </script>
 
 <style scoped>
+  .wrapper {
+    display: flex;
+    width: 70%;
+    align-items: center;
+  }
+
+  .el-carousel {
+    width: 100%;
+  }
+
+  .item {
+    height: 100%;
+    background: url("../../assets/img/edu/env/high.jpg") no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  b {
+    font-size: 30px;
+    color: #f5f5f7;
+    margin: 50px;
+  }
 
 </style>
