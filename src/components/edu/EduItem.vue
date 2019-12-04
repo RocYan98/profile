@@ -8,7 +8,7 @@
         <div class="info">
           <b style="font-size: 40px;margin-bottom: 10px">{{ title }}</b>
           <b style="font-size: 25px">{{ pos }}-{{ sta }}</b>
-          <a href="javacript:;" style="margin-top: 20px; text-decoration: none; font-size: 20px; color: #0066cc;">进一步了解
+          <a :href="web" style="margin-top: 20px; text-decoration: none; font-size: 20px; color: #0066cc;" target="_blank">进一步了解
             ></a>
         </div>
       </dic>
@@ -18,7 +18,7 @@
         <div class="info">
           <b style="font-size: 40px;margin-bottom: 10px">{{ title }}</b>
           <b style="font-size: 25px">{{ pos }}-{{ sta }}</b>
-          <a href="javacript:;" style="margin-top: 20px; text-decoration: none; font-size: 20px; color: #0066cc;">进一步了解
+          <a :href="web" style="margin-top: 20px; text-decoration: none; font-size: 20px; color: #0066cc;" target="_blank">进一步了解
             ></a>
         </div>
         <div class="img">
@@ -32,7 +32,7 @@
 <script>
   export default {
     name: "EduItem",
-    props: ['name', 'title', 'pos', 'sta', 'index'],
+    props: ['name', 'title', 'pos', 'sta', 'index', 'web'],
   }
 </script>
 

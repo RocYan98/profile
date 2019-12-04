@@ -1,15 +1,9 @@
 <template>
   <div class="wrapper">
-<!--    <div class="item">-->
-<!--      <svg-icon name="webstorm"></svg-icon>-->
-<!--      <h1 style="display: inline; font-size: 60px">WebStorm</h1>-->
-<!--    </div>-->
-<!--    <div class="img">-->
-<!--      <img src="@/assets/img/webstorm.png" alt="webstorm" style="height: 70%">-->
-<!--    </div>-->
     <index-body name="webstorm" title="WebStorm"></index-body>
-    <index-body name="clion" bgc="#3b3e43" title="CLion"></index-body>
+    <index-body name="idea" bgc="#3b3e43" title="IDEA"></index-body>
     <index-body name="pycharm" title="PyCharm"></index-body>
+    <index-body name="clion" bgc="#3b3e43" title="CLion"></index-body>
   </div>
 </template>
 

@@ -2,7 +2,8 @@
   <div class="wrapper">
     <el-carousel :interval="4000" type="card" height="500px">
       <el-carousel-item>
-        <div class="item">
+        <img src="@/assets/img/edu/env/high.jpg" alt="test">
+        <div class="des">
           <b>test</b>
         </div>
       </el-carousel-item>
@@ -36,19 +37,17 @@
     width: 100%;
   }
 
-  .item {
-    height: 100%;
-    background: url("../../assets/img/edu/env/high.jpg") no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
   b {
     font-size: 30px;
-    color: #f5f5f7;
-    margin: 50px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .des {
+    transform: translateX(45%)
   }
 
 </style>
