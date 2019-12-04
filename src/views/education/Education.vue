@@ -2,32 +2,17 @@
   <div class="wrapper">
     <div class="nav">
       <div class="nav-items">
-        <nav-item title="海亮外国语学校" name="primary" :class="{active: active === 0}"></nav-item>
-        <nav-item title="稠州中学" name="middle" :class="{active: active === 1}"></nav-item>
-        <nav-item title="义乌二中" name="high" :class="{active: active === 2}"></nav-item>
-        <nav-item title="中国计量大学" name="university" :class="{active: active === 3}"></nav-item>
+        <nav-item v-for="(school,index) in schools" :key="school.name" :title="school.title" :name="school.name"
+                  :class="{active: active === index}"></nav-item>
       </div>
     </div>
     <div class="box">
-      <div class="section" style="height: 44px">
-        <a name="primary"></a>
+      <div v-for="(school,index) in schools" :key="school.name">
+        <div class="section" style="height: 44px">
+          <a :name="school.name"></a>
+        </div>
+        <edu-item :name="school.name" :title="school.title" :pos="school.pos" :sta="school.sta" :index="index" :web="school.web"></edu-item>
       </div>
-      <edu-item name="primary" title="海亮外国语学校" pos="诸暨" sta="小学" index="0" web="http://hfls.hailiangedu.com"></edu-item>
-
-      <div class="section" style="height: 44px">
-        <a name="middle"></a>
-      </div>
-      <edu-item name="middle" title="稠州中学" pos="义乌" sta="初中" index="1" web="https://baike.baidu.com/item/稠州中学/7803445?fr=aladdin"></edu-item>
-
-      <div class="section" style="height: 44px">
-        <a name="high"></a>
-      </div>
-      <edu-item name="high" title="义乌二中" pos="义乌" sta="高中" index="2" web="https://baike.baidu.com/item/义乌市第二中学/10070472?fromtitle=义乌二中&fromid=5721855&fr=aladdin"></edu-item>
-
-      <div class="section" style="height: 44px">
-        <a name="university"></a>
-      </div>
-      <edu-item name="university" title="中国计量大学" pos="杭州" sta="大学" index="3" web="https://www.cjlu.edu.cn"></edu-item>
     </div>
   </div>
 </template>
@@ -42,6 +27,36 @@
     data() {
       return {
         active: 0,
+        schools: [
+          {
+            title: "海亮外国语学校",
+            name: "primary",
+            pos: "诸暨",
+            sta: "小学",
+            web: "http://hfls.hailiangedu.com"
+          },
+          {
+            title: "稠州中学",
+            name: "middle",
+            pos: "义乌",
+            sta: "初中",
+            web: "https://baike.baidu.com/item/稠州中学/7803445?fr=aladdin"
+          },
+          {
+            title: "义乌二中",
+            name: "high",
+            pos: "义乌",
+            sta: "高中",
+            web: "https://baike.baidu.com/item/义乌市第二中学/10070472?fromtitle=义乌二中&fromid=5721855&fr=aladdin"
+          },
+          {
+            title: "中国计量大学",
+            name: "university",
+            pos: "杭州",
+            sta: "大学",
+            web: "https://www.cjlu.edu.cn"
+          },
+        ]
       }
     },
     methods: {
