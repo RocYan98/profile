@@ -112,24 +112,4 @@
     height: 100%;
     width: 100%;
   }
-
-  .edu-wrapper {
-    width: 100%;
-    height: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    display: flex;
-  }
-
-  .item {
-    display: flex;
-  }
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 50px;
-  }
 </style>
