@@ -1,28 +1,10 @@
 <template>
   <div class="wrapper">
-    <el-carousel :interval="4000" type="card" height="500px">
-      <el-carousel-item>
-        <img src="@/assets/img/prize/0.jpg" alt="test">
+    <el-carousel :interval="4000" type="card" height="500px" interval="2000">
+      <el-carousel-item v-for="(prize, index) in prizes" :key="index">
+        <img :src="require('@/assets/img/prize/' + index + '.jpg')">
         <div class="des">
-          <b>2017-2018学年第一学期三等奖学金</b>
-        </div>
-      </el-carousel-item>
-      <el-carousel-item>
-        <img src="@/assets/img/prize/1.jpg" alt="test">
-        <div class="des">
-          <b>2017-2018学年第二学期三等奖学金</b>
-        </div>
-      </el-carousel-item>
-      <el-carousel-item>
-        <img src="@/assets/img/prize/2.jpg" alt="test">
-        <div class="des">
-          <b>2018-2019学年第一学期社会实践奖学金</b>
-        </div>
-      </el-carousel-item>
-      <el-carousel-item>
-        <img src="@/assets/img/prize/3.jpg" alt="test">
-        <div class="des">
-          <b>2018-2019学年优秀执委</b>
+          <b>{{ prize }}</b>
         </div>
       </el-carousel-item>
     </el-carousel>
@@ -31,7 +13,17 @@
 
 <script>
   export default {
-    name: "Prize"
+    name: "Prize",
+    data() {
+      return {
+        prizes: [
+          "2017-2018学年第一学期三等奖学金",
+          "2017-2018学年第二学期三等奖学金",
+          "2018-2019学年第一学期社会实践奖学金",
+          "2018-2019学年优秀执委",
+        ]
+      }
+    }
   }
 </script>
 
