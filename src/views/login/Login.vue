@@ -12,9 +12,9 @@
     </div>
     <div class="btn">
       <el-button type="primary" style="width: 100%; height: 50px; margin-bottom: 12px" @click="login">登陆</el-button>
-      <el-button type="text">忘记了用户名或密码？</el-button>
+      <el-button type="text" @click="forget">忘记了用户名或密码？</el-button>
       <br>
-      <el-button type="text">没有账号？立即创建一个。</el-button>
+      <el-button type="text" @click="register">没有账号？立即创建一个。</el-button>
     </div>
   </div>
 </template>
@@ -30,11 +30,30 @@
     },
     methods: {
       login() {
-        if (this.username === "cjlu" && this.pwd == "cjlu") {
+        if (this.username === '' || this.pwd === '') {
+          this.$alert('用户名密码都不输，登你🐎呢??', '傻逼', {
+            confirmButtonText: '确定',
+          });
+          return;
+        }
+        if (this.username === "cjlu" && this.pwd === "cjlu") {
           this.$router.push('/');
         } else {
-          alert('用户名或密码错误');
+          this.$alert('用户名或密码错误', '错误', {
+            confirmButtonText: '确定',
+          });
+          return;
         }
+      },
+      forget() {
+        this.$alert('没有写后端，看看就好', '嘿嘿', {
+          confirmButtonText: '确定',
+        });
+      },
+      register() {
+        this.$alert('没有写后端，创你🐎呢', '哈哈', {
+          confirmButtonText: '确定',
+        });
       }
     }
   }
