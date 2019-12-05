@@ -1,19 +1,7 @@
+
 # profile
 
-## Project setup
-```
-npm install
-```
+##简介
+web前端开发的课程设计，[网址:rocyan.com](rocyan.com)，目前只做了谷歌浏览器段适配，
+其他浏览器可能无法正常显示。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
