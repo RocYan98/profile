@@ -1,10 +1,15 @@
 <template>
   <div class="wrapper">
-    <div style="display: flex; justify-content: center; align-items: center; width: 100%">
-      <b>web前端开发</b>
-    </div>
-    <div style="margin-right: 50px">
-      <el-button type="text" @click="open">登陆</el-button>
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%">
+      <div style="width: 10%"></div>
+      <b>Java Web 开发</b>
+      <div style="width: 10%">
+        <el-button v-if="this.$store.state.user == -1" type="text" @click="open">登陆 / 注册</el-button>
+        <div v-else>
+          <el-button type="text" @click="open">账号信息</el-button>
+          <el-button type="text" @click="logout">退出登陆</el-button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -13,10 +18,15 @@
   export default {
     name: "Top",
     methods: {
-      open: function () {
-        this.$router.push("/login");
-      }
-    }
+      open() {
+        if (window.localStorage.getItem("user") === null) this.$router.push("/login");
+        else this.$router.push("/account");
+      },
+      logout() {
+        this.$store.commit('logout');
+        this.$router.push("/index");
+      },
+    },
   }
 </script>
 

@@ -2,20 +2,23 @@
   <div class="wrapper">
     <div class="label">
       <h1>
-        请登录。
+        请登录。{{this.$store.state.id}}
       </h1>
     </div>
-    <div class="input">
-      <el-input v-model="username" placeholder="用户名" style="margin-bottom: 20px"></el-input>
-      <el-input placeholder="密码" v-model="pwd" show-password style="margin-bottom: 20px"></el-input>
-      <p style="font-size: 13px; color: #333; margin: 0">你的用户名是你的电子邮件地址或手机号码。</p>
-    </div>
-    <div class="btn">
-      <el-button type="primary" style="width: 100%; height: 50px; margin-bottom: 12px" @click="login">登陆</el-button>
-      <el-button type="text" @click="forget">忘记了用户名或密码？</el-button>
-      <br>
-      <el-button type="text" @click="register">没有账号？立即创建一个。</el-button>
-    </div>
+    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" style="width: 35%">
+      <el-form-item prop="username">
+        <el-input v-model="ruleForm.username" placeholder="用户名"></el-input>
+      </el-form-item>
+      <el-form-item prop="pwd">
+        <el-input type="password" v-model="ruleForm.pwd" placeholder="密码"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" style="width: 100%; height: 50px;" @click="submitForm('ruleForm')">登陆</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="text" style="margin-left: 10px" @click="register">没有账号？立即创建一个。</el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -24,37 +27,51 @@
     name: "Login",
     data() {
       return {
-        username: '',
-        pwd: ''
+        ruleForm: {
+          username: '',
+          pwd: '',
+        },
+        rules: {
+          username: [
+            {required: true, message: '请输入用户名', trigger: 'blur'}
+          ],
+          pwd: [
+            {required: true, message: '请输入密码', trigger: 'blur'}
+          ],
+        }
       }
     },
     methods: {
-      login() {
-        if (this.username === '' || this.pwd === '') {
-          this.$alert('用户名密码都不输，登你🐎呢??', '傻逼', {
-            confirmButtonText: '确定',
-          });
-          return;
-        }
-        if (this.username === "cjlu" && this.pwd === "cjlu") {
-          this.$router.push('/');
-        } else {
-          this.$alert('用户名或密码错误', '错误', {
-            confirmButtonText: '确定',
-          });
-          return;
-        }
-      },
-      forget() {
-        this.$alert('没有写后端，看看就好', '嘿嘿', {
-          confirmButtonText: '确定',
-        });
-      },
       register() {
-        this.$alert('没有写后端，创你🐎呢', '哈哈', {
-          confirmButtonText: '确定',
+        this.$router.push("/register");
+      },
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            this.axios({
+              method: 'post',
+              url: '/login',
+              data: {
+                username: this.ruleForm.username,
+                pwd: this.ruleForm.pwd
+              }
+            })
+              .then( (response) => {
+                if (response.data.code == 0) {
+                  this.$store.commit('login', response.data.data);
+                  this.$router.push("/profile");
+                } else {
+                  this.$alert(response.data.msg, '错误', {
+                    confirmButtonText: '确定',
+                  });
+                }
+              });
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
         });
-      }
+      },
     }
   }
 </script>
@@ -74,16 +91,4 @@
     padding-bottom: 40px;
   }
 
-  .input {
-    width: 35%;
-  }
-
-  .btn {
-    width: 35%;
-    padding-top: 40px;
-  }
-
-  .el-button {
-    margin-left: 0px;
-  }
 </style>

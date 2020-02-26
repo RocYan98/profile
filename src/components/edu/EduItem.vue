@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="edu-wrapper" v-if="index % 2 === 0">
-      <dic class="item">
+      <div class="item">
         <div class="img">
           <img :src="require('@/assets/img/edu/env/' + name + '.jpg')" :alt="name">
         </div>
@@ -11,10 +11,10 @@
           <a :href="web" style="margin-top: 20px; text-decoration: none; font-size: 20px; color: #0066cc;" target="_blank">进一步了解
             ></a>
         </div>
-      </dic>
+      </div>
     </div>
     <div class="edu-wrapper" style="background:#eaeaec;" v-else>
-      <dic class="item" style="justify-content: flex-end">
+      <div class="item" style="justify-content: flex-end">
         <div class="info">
           <b style="font-size: 40px;margin-bottom: 10px">{{ title }}</b>
           <b style="font-size: 25px">{{ pos }}-{{ sta }}</b>
@@ -24,7 +24,7 @@
         <div class="img">
           <img :src="require('@/assets/img/edu/env/' + name + '.jpg')" :alt="name">
         </div>
-      </dic>
+      </div>
     </div>
   </div>
 </template>

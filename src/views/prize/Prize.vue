@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <el-carousel :interval="4000" type="card" height="500px" interval="2000">
-      <el-carousel-item v-for="(prize, index) in prizes" :key="index">
-        <img :src="require('@/assets/img/prize/' + index + '.jpg')">
+      <el-carousel-item v-for="prize in prizes" :key="prize.pid">
+        <img :src="require('@/assets/img/prize/' + prize.pid + '.jpg')">
         <div class="des">
-          <b>{{ prize }}</b>
+          <b>{{ prize.des }}</b>
         </div>
       </el-carousel-item>
     </el-carousel>
@@ -16,12 +16,19 @@
     name: "Prize",
     data() {
       return {
-        prizes: [
-          "2017-2018学年第一学期三等奖学金",
-          "2017-2018学年第二学期三等奖学金",
-          "2018-2019学年第一学期社会实践奖学金",
-          "2018-2019学年优秀执委",
-        ]
+        prizes: [{
+            pid: 0,
+            des: "2017-2018学年第一学期三等奖学金"
+          }, {
+            pid: 1,
+            des: "2017-2018学年第二学期三等奖学金"
+          }, {
+            pid: 2,
+            des: "2018-2019学年第一学期社会实践奖学金"
+          }, {
+            pid: 3,
+            des: "2018-2019学年优秀执委"
+          }]
       }
     }
   }

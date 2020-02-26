@@ -2,20 +2,26 @@
   <nav>
     <div class="wrapper">
       <div class="item">
-        <a href="javascript:;" @click="toIndex"><img src="@/assets/img/logo.png" alt="logo"
-                                                     style="height: 25px; width: 25px"></a>
+        <router-link to="/index">
+          <img src="@/assets/img/logo.png" alt="logo" style="height: 25px; width: 25px; margin-top: 5px">
+        </router-link>
       </div>
       <div class="item">
-        <router-link to="/profile">个人信息</router-link>
+        <router-link :to="profile">个人信息</router-link>
       </div>
       <div class="item">
-        <router-link to="/education">求学经历</router-link>
+        <router-link :to="education">求学经历</router-link>
       </div>
       <div class="item">
-        <router-link to="/prize">获奖情况</router-link>
+        <router-link :to="prize">获奖情况</router-link>
       </div>
       <div class="item">
-        <router-link to="/hometown">家乡介绍</router-link>
+        <router-link :to="hometown">家乡介绍</router-link>
+      </div>
+      <div class="item">
+        <router-link to="/message">
+          <img src="@/assets/img/message.svg" alt="message" style="width: 20%; margin-top: 5px">
+        </router-link>
       </div>
     </div>
   </nav>
@@ -24,9 +30,22 @@
 <script>
   export default {
     name: "NavMenu",
-    methods: {
-      toIndex() {
-        this.$router.push('/index');
+    computed: {
+      profile() {
+        if (this.$store.state.user == -1) return "";
+        else return "/profile";
+      },
+      education() {
+        if (this.$store.state.user == -1) return "";
+        else return "/education";
+      },
+      prize() {
+        if (this.$store.state.user == -1) return "";
+        else return "/prize";
+      },
+      hometown() {
+        if (this.$store.state.user == -1) return "";
+        else return "/hometown";
       }
     }
   }
@@ -45,10 +64,6 @@
     height: 100%;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .item {
-
   }
 
   a {

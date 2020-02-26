@@ -35,7 +35,7 @@
   .img {
     /*position: relative;*/
     margin-top: 20px;
-    height: 100%;
+    height: 80%;
     width: 60%;
   }
 </style>

@@ -29,7 +29,7 @@
       NavMenu,
       CommonFooter,
       CommonTop
-    }
+    },
   }
 </script>
 

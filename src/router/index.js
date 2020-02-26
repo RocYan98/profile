@@ -13,42 +13,63 @@ const routes = [
         path: '/index',
         component: () => import("@/views/index/Index"),
         meta: {
-          title: "web前端开发"
+          title: "Roc"
         }
       },
       {
         path: '/profile',
         component: () => import("@/views/profile/Profile"),
         meta: {
-          title: "web前端开发 | 个人信息"
+          title: "Roc | 个人信息"
         }
       },
       {
         path: '/prize',
         component: () => import("@/views/prize/Prize"),
         meta: {
-          title: "web前端开发 | 获奖情况"
+          title: "Roc | 获奖情况"
         }
       },
       {
         path: '/hometown',
         component: () => import("@/views/hometown/Hometown"),
         meta: {
-          title: "web前端开发 | 家乡介绍"
+          title: "Roc | 家乡介绍"
         }
       },
       {
         path: '/education',
         component: () => import("@/views/education/Education"),
         meta: {
-          title: "web前端开发 | 求学经历"
+          title: "Roc | 求学经历"
         }
       },
       {
         path: '/login',
         component: () => import("@/views/login/Login"),
         meta: {
-          title: "web前端开发 | 登陆"
+          title: "Roc | 登陆"
+        }
+      },
+      {
+        path: '/register',
+        component: () => import("@/views/register/Register"),
+        meta: {
+          title: "Roc | 注册"
+        }
+      },
+      {
+        path: '/account',
+        component: () => import("@/views/account/Account"),
+        meta: {
+          title: "Roc | 账户信息"
+        }
+      },
+      {
+        path: '/message',
+        component: () => import("@/views/message/Message"),
+        meta: {
+          title: "Roc | 留言板"
         }
       }
     ]
