@@ -2,8 +2,7 @@
   <div>
     <div class="edu-wrapper" v-if="index % 2 === 0">
       <div class="item">
-        <div class="img">
-          <img :src="require('@/assets/img/edu/env/' + name + '.jpg')" :alt="name">
+        <div class="img" :style="{backgroundImage : 'url('+ require('@/assets/img/edu/env/' + name + '.jpg')+')'}">
         </div>
         <div class="info">
           <b style="font-size: 40px;margin-bottom: 10px">{{ title }}</b>
@@ -21,8 +20,7 @@
           <a :href="web" style="margin-top: 20px; text-decoration: none; font-size: 20px; color: #0066cc;" target="_blank">进一步了解
             ></a>
         </div>
-        <div class="img">
-          <img :src="require('@/assets/img/edu/env/' + name + '.jpg')" :alt="name">
+        <div class="img" :style="{backgroundImage : 'url('+ require('@/assets/img/edu/env/' + name + '.jpg')+')'}">
         </div>
       </div>
     </div>
@@ -55,5 +53,12 @@
     flex-direction: column;
     justify-content: center;
     margin: 50px;
+  }
+
+  .img {
+    width: 45%;
+    height: 475px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
   }
 </style>

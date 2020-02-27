@@ -18,9 +18,9 @@
 </template>
 
 <script>
-  import NavMenu from "../components/navmenu/NavMenu";
-  import CommonFooter from "../components/footer/Footer";
-  import CommonTop from "../components/top/Top";
+  import NavMenu from "../components/front/navmenu/NavMenu";
+  import CommonFooter from "../components/front/footer/Footer";
+  import CommonTop from "../components/front/top/Top";
 
 
   export default {

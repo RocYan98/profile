@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import IndexBody from "../../components/body/IndexBody";
+  import IndexBody from "../../../components/front/body/IndexBody";
 
   export default {
     name: "index",

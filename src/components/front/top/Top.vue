@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div style="display: flex; justify-content: space-between; align-items: center; width: 100%">
       <div style="width: 10%"></div>
-      <b>Java Web 开发</b>
+      <b>Java Web 开发 -- 前台展示</b>
       <div style="width: 10%">
         <el-button v-if="this.$store.state.user == -1" type="text" @click="open">登陆 / 注册</el-button>
         <div v-else>

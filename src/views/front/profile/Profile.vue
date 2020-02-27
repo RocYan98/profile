@@ -56,7 +56,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    background: url('../../assets/img/profile/background.jpg');
+    background: url('../../../assets/img/profile/background.jpg');
   }
 
   .box {

@@ -18,8 +18,8 @@
 </template>
 
 <script>
-  import NavItem from "../../components/edu/NavItem";
-  import EduItem from "../../components/edu/EduItem";
+  import NavItem from "../../../components/front/edu/NavItem";
+  import EduItem from "../../../components/front/edu/EduItem";
 
   export default {
     name: "Education",
