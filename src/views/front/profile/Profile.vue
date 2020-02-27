@@ -62,8 +62,7 @@
   .box {
     display: flex;
     width: 60%;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 40px;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.2);
     z-index: 998;
@@ -86,14 +85,6 @@
     font-size: 30px;
   }
 
-  .img {
-    height: 200px;
-    width: 200px;
-    margin-top: 80px;
-    margin-bottom: 80px;
-    background-size: 200px;
-    border-radius: 50%;
-  }
 
   .font {
     color: #161616;

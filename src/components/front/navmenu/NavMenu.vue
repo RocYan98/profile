@@ -19,9 +19,7 @@
         <router-link :to="hometown">家乡介绍</router-link>
       </div>
       <div class="item">
-        <router-link to="/message">
-          <img src="@/assets/img/message.svg" alt="message" style="width: 20%; margin-top: 5px">
-        </router-link>
+        <router-link to="/message" class="el-icon-notebook-1" style="font-size: 25px;"></router-link>
       </div>
     </div>
   </nav>

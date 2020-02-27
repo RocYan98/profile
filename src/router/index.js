@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import fr from "element-ui/src/locale/lang/fr";
 
 Vue.use(VueRouter)
 
@@ -7,7 +8,7 @@ const routes = [
   {
     path: '/',
     redirect: '/index',
-    component: () => import("../views/Main"),
+    component: () => import("@/views/Main"),
     children: [
       {
         path: '/index',
@@ -71,7 +72,15 @@ const routes = [
         meta: {
           title: "Roc | 留言板"
         }
-      }
+      },
+
+      {
+        path: '/backstage',
+        component: () => import("@/views/back/Index"),
+        meta: {
+          title: "Roc | 后台管理"
+        }
+      },
     ]
   },
 ]
@@ -79,7 +88,7 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 })
 
 export default router

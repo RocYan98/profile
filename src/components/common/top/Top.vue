@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
-    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%">
+    <div v-if="this.$route.path != '/backstage'" style="display: flex; justify-content: space-between; align-items: center; width: 100%">
       <div style="width: 10%"></div>
-      <b>Java Web 开发 -- 前台展示</b>
+      <b>Java Web开发 -- 前台展示<el-button type="text" @click="toBack">进入后台管理界面</el-button></b>
       <div style="width: 10%">
         <el-button v-if="this.$store.state.user == -1" type="text" @click="open">登陆 / 注册</el-button>
         <div v-else>
@@ -10,6 +10,9 @@
           <el-button type="text" @click="logout">退出登陆</el-button>
         </div>
       </div>
+    </div>
+    <div v-else style="display: flex; justify-content: center; align-items: center; width: 100%">
+      <b>Java Web开发 -- 后台管理<el-button type="text" @click="toFront">返回前台展示界面</el-button></b>
     </div>
   </div>
 </template>
@@ -26,6 +29,12 @@
         this.$store.commit('logout');
         this.$router.push("/index");
       },
+      toBack() {
+        this.$router.push("/backstage");
+      },
+      toFront() {
+        this.$router.push("/index");
+      }
     },
   }
 </script>

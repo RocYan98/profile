@@ -3,11 +3,19 @@
     <div class="top">
       <common-top></common-top>
     </div>
-    <div class="body">
-      <div class="head">
+    <div v-if="this.$route.path != '/backstage'" class="body">
+      <div  class="head">
         <nav-menu></nav-menu>
       </div>
       <div style="flex: 1; width: 100%; display: flex; justify-content: center">
+        <router-view></router-view>
+      </div>
+    </div>
+    <div v-else class="body2">
+      <div class="backNav">
+        <back-nav></back-nav>
+      </div>
+      <div style="width: 85%; height: 100%;">
         <router-view></router-view>
       </div>
     </div>
@@ -19,8 +27,9 @@
 
 <script>
   import NavMenu from "../components/front/navmenu/NavMenu";
-  import CommonFooter from "../components/front/footer/Footer";
-  import CommonTop from "../components/front/top/Top";
+  import CommonFooter from "../components/common/footer/Footer";
+  import CommonTop from "../components/common/top/Top";
+  import BackNav from "../components/back/backNav/BackNav";
 
 
   export default {
@@ -28,7 +37,8 @@
     components: {
       NavMenu,
       CommonFooter,
-      CommonTop
+      CommonTop,
+      BackNav
     },
   }
 </script>
@@ -41,20 +51,20 @@
     align-items: center;
   }
 
-  .top{
+  .top {
     width: 100%;
     height: 44px;
     background: #444;
     flex: none;
   }
 
-  .head{
+  .head {
     width: 100%;
     height: 44px;
     background: rgba(0, 0, 0, 0.8);
     position: sticky;
     top: 0px;
-    z-index:999;
+    z-index: 999;
   }
 
   .body {
@@ -64,6 +74,17 @@
     justify-items: center;
     align-items: center;
     flex: 1;
+  }
+
+  .body2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .backNav {
+    width: 15%;
+    height: 100%;
   }
 
   .foot {
