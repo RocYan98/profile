@@ -19,6 +19,13 @@ router.beforeEach((to, from, next) => {
 Vue.config.productionTip = false;
 
 axios.defaults.baseURL = "http://localhost:8080/api";
+let instance = axios.create({
+  baseURL: "http://localhost:8080/api",
+  headers: {'Content-Type': 'multipart/form-data;boundary'}
+});
+Vue.config.productionTip = false;
+Vue.prototype.instance = instance;
+
 Vue.use(ElementUI);
 Vue.use(VueAxios, axios);
 

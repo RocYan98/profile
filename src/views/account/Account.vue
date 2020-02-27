@@ -38,21 +38,46 @@
           </el-dialog>
 
 
-
-
         </td>
         <td>
-          <b>获奖信息</b><br>
-          <p>2017-2018学年第一学期三等奖学金</p>
-          <p>2017-2018学年第二学期三等奖学金</p>
-          <p>2018-2019学年第一学期社会实践奖学金</p>
-          <p>2018-2019学年优秀执委</p>
+          <b>头像</b><br>
+          <el-avatar :size="100" style="margin: 20px">
+            <img :src="user.head"/>
+          </el-avatar>
+          <br>
+          <el-button type="button" @click="headFormVisible = true" style="margin-left: 20px">修改头像</el-button>
+
+          <el-dialog title="上传头像" :visible.sync="headFormVisible" width="30%">
+            <el-form :model="head">
+              <el-form-item :label-width="formLabelWidth"
+                            ref="uploadElement">
+                <el-upload ref="upload"
+                           action="#"
+                           accept="image/png,image/jpg,image/jpeg"
+                           list-type="picture-card"
+                           :limit=limitNum
+                           :auto-upload="false"
+                           :before-upload="handleBeforeUpload"
+                           :on-preview="handlePictureCardPreview"
+                           :on-remove="handleRemove"
+                           :on-change="imgChange"
+                           :class="{hide:hideUpload}">
+                  <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible">
+                  <img width="100%"
+                       :src="dialogImageUrl"
+                       alt="">
+                </el-dialog>
+              </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="headFormVisible = false">取消</el-button>
+              <el-button type="primary" @click="uploadFile">立即上传</el-button>
+            </div>
+          </el-dialog>
         </td>
       </tr>
-
-
-
-
 
 
       <tr valign="top">
@@ -70,7 +95,7 @@
                     :key="item.uid"
                     :label="item.sta"
                     :value="index"
-                    >
+                  >
                   </el-option>
                 </el-select>
               </el-form-item>
@@ -91,13 +116,6 @@
           </el-dialog>
         </td>
       </tr>
-
-
-
-
-
-
-
 
 
       <tr valign="top">
@@ -187,7 +205,15 @@
           checkPwd: [
             {required: true, validator: validatePwd2, trigger: 'blur'}
           ],
-        }
+        },
+
+        headFormVisible: false,
+        hideUpload: false,
+        dialogImageUrl: '',
+        dialogVisible: false,//图片预览弹窗
+        formLabelWidth: '80px',
+        limitNum: 1,
+        head: {}
       }
     },
     computed: {
@@ -318,7 +344,74 @@
               }
             });
         });
-      }
+      },
+
+      handleBeforeUpload(file) {
+        if (!(file.type === 'image/png' || file.type === 'image/jpg' || file.type === 'image/jpeg')) {
+          this.$alert('请上传格式为image/png, image/jpg, image/jpeg的图片', '警告', {
+            confirmButtonText: '确定'
+          });
+        }
+
+        let size = file.size / 1024 / 1024 / 2;
+        if (size > 2) {
+          this.$alert('图片大小必须小于2M', '警告', {
+            confirmButtonText: '确定'
+          });
+        }
+
+        let fd = new FormData();//通过form数据格式来传
+        fd.append("file", file, file.name); //传文件
+        this.instance.post('/user/updateHead', fd)
+          .then((response) => {
+            if (response.data.code === 0) {
+              this.axios.request({
+                url: "/user/updateDB",
+                method: "get",
+                params: {
+                  uid: this.$store.state.user.uid,
+                  url: response.data.data,
+                }
+              })
+                .then(res => {
+                  if (res.data.code === 0) {
+                    this.$alert('上传成功', '成功', {
+                      confirmButtonText: '确定'
+                    });
+                    this.$store.commit('updateUser', res.data.data);
+                  } else {
+                    this.$alert('上传失败', '失败', {
+                      confirmButtonText: '确定'
+                    });
+                  }
+                })
+            } else {
+              this.$alert('上传失败', '失败', {
+                confirmButtonText: '确定'
+              });
+            }
+          })
+      },
+      // 文件列表移除文件时的钩子
+      handleRemove (file, fileList) {
+        this.hideUpload = fileList.length >= this.limitNum;
+      },
+      // 点击文件列表中已上传的文件时的钩子
+      handlePictureCardPreview (file) {
+        this.dialogImageUrl = file.url;
+        this.dialogVisible = true;
+      },
+      uploadFile () {
+        this.$refs.upload.submit();
+      },
+      imgChange (files, fileList) {
+        this.hideUpload = fileList.length >= this.limitNum;
+        if (fileList) {
+          this.$refs.uploadElement.clearValidate();
+        }
+      },
+
+
     }
   }
 </script>

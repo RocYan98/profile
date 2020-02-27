@@ -2,8 +2,8 @@
   <div class="wrapper">
     <div class="box">
       <div class="left">
-        <el-avatar :size="200" src="https://empty" @error="errorHandler" style="margin: 100px">
-          <img v-if="user != -1" :src="require('@/assets/img/profile/' + user.head + '.jpg')"/>
+        <el-avatar :size="200" style="margin: 100px">
+          <img :src="user.head"/>
         </el-avatar>
         <div class="font">
           <b>个人</b>
@@ -44,12 +44,9 @@
     computed: {
       user() {
         return this.$store.state.user;
-      }
+      },
     },
     methods: {
-      errorHandler() {
-        return true
-      }
     }
   }
 </script>
