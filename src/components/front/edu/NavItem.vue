@@ -1,7 +1,7 @@
 <template>
   <div class="a">
     <a :href="'#' + name">
-      <img :src="require('@/assets/img/edu/' + name + '.png')" :alt="name" style="height: 50px; margin-bottom: 5px">
+      <img :src="require('@/assets/img/edu/' + name + '.png')" style="height: 50px; margin-bottom: 5px">
     </a>
     {{ title }}
   </div>

@@ -9,16 +9,19 @@
     <el-submenu index="1">
       <template slot="title">
         <i class="el-icon-s-management"></i>
-        <span>信息管理</span>
+        <span>用户管理</span>
       </template>
-      <el-menu-item index="1-1">个人信息</el-menu-item>
+      <el-menu-item index="1-1">用户信息</el-menu-item>
       <el-menu-item index="1-2">教育信息</el-menu-item>
-      <el-menu-item index="1-3">家乡信息</el-menu-item>
     </el-submenu>
-    <el-menu-item index="2">
-      <i class="el-icon-s-custom"></i>
-      <span slot="title">账号管理</span>
-    </el-menu-item>
+    <el-submenu index="2">
+      <template slot="title">
+        <i class="el-icon-office-building"></i>
+        <span>家乡管理</span>
+      </template>
+      <el-menu-item index="2-1">旅游景点</el-menu-item>
+      <el-menu-item index="2-2">家乡美食</el-menu-item>
+    </el-submenu>
     <el-menu-item index="3">
       <i class="el-icon-notebook-1"></i>
       <span slot="title">留言管理</span>

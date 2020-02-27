@@ -10,7 +10,7 @@
         </p>
       </div>
     </div>
-    <div class="pic" :style="{backgroundImage : 'url('+ require('@/assets/img/hometown/' + hid + '.jpg')+')'}">
+    <div class="pic" :style="{backgroundImage : 'url('+pic+')'}">
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@
 <script>
   export default {
     name: "HomeInfo",
-    props: ['title', 'text', 'hid']
+    props: ['title', 'text', 'pic']
   }
 </script>
 
