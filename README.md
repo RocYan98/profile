@@ -11,3 +11,6 @@ web前端开发课程+java web课程，前端使用vue，在1.0的版本上增�
 
 ## 2.1版本简介
 已部署阿里云，[网址:rocyan.com](http://rocyan.com)，只适配谷歌。增加了上传头像的功能，vue + elementUI + springboot
+
+## 2.2版本简介
+将前端页面分为前台展示和后台管理界面
