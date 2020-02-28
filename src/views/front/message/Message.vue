@@ -46,7 +46,7 @@
           background
           layout="prev, pager, next"
           :current-page="current"
-          :page-size="3"
+          :page-size="size"
           :total="total">
         </el-pagination>
       </div>
@@ -61,6 +61,7 @@
       return {
         current: 1,
         total: 0,
+        size: 3,
         records: '',
         dialogFormVisible: false,
         form: {
@@ -78,6 +79,7 @@
           url: "/msg/page",
           params: {
             current: this.current,
+            size: this.size,
           },
         })
           .then((response) => {
@@ -90,20 +92,31 @@
         this.getPage();
       },
       submit() {
-        this.dialogFormVisible = false;
-        this.axios({
-          method: "post",
-          url: "/msg/input",
-          data: {
-            msg: this.form.msg,
-            name: this.$store.state.user.cname,
-          }
-        })
-         .then((response) => {
-           if (response.data.code == 0) {
-             this.getPage();
-           }
-         })
+        this.$confirm('确定留言?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.axios.request({
+            method: "post",
+            url: "/msg/input",
+            data: {
+              msg: this.form.msg,
+              name: this.$store.state.user.cname,
+            },
+          })
+            .then(response => {
+              if (response.data.code === 0) {
+                this.dialogFormVisible = false;
+                this.$message({
+                  type: 'success',
+                  message: response.data.msg
+                });
+                this.form.msg = "";
+                this.getPage()
+              }
+            })
+        });
       }
     }
   }

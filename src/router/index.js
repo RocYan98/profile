@@ -75,12 +75,19 @@ const routes = [
       },
 
       {
-        path: '/backstage',
-        component: () => import("@/views/back/Index"),
+        path: '/backstage/message',
+        component: () => import("@/views/back/message/Message"),
         meta: {
-          title: "Roc | 后台管理"
+          title: "Roc | 留言管理"
         }
       },
+      {
+        path: '/backstage/user',
+        component: () => import("@/views/back/user/User"),
+        meta: {
+          title: "Roc | 用户管理"
+        }
+      }
     ]
   },
 ]

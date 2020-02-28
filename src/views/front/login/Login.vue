@@ -59,7 +59,7 @@
               .then( (response) => {
                 if (response.data.code == 0) {
                   this.$store.commit('login', response.data.data);
-                  this.$router.push("/profile");
+                  this.$router.push("/account");
                 } else {
                   this.$alert(response.data.msg, '错误', {
                     confirmButtonText: '确定',

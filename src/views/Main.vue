@@ -3,7 +3,7 @@
     <div class="top">
       <common-top></common-top>
     </div>
-    <div v-if="this.$route.path != '/backstage'" class="body">
+    <div v-if="!this.$route.path.startsWith('/backstage')" class="body">
       <div  class="head">
         <nav-menu></nav-menu>
       </div>

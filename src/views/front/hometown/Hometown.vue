@@ -3,13 +3,13 @@
     <div class="nav">
       <div class="nav-items">
         <div class="a" :class="{'active': active == 'attraction'}">
-          <a href="javascript:;" @click="active = 'attraction'">
+          <a href="#" @click="active = 'attraction'">
             <img src="@/assets/img/hometown/attraction.png" style="height: 40px; margin-bottom: 5px">
           </a>
           旅游景点
         </div>
         <div class="a" :class="{'active': active == 'food'}">
-          <a href="javascript:;" @click="active = 'food'">
+          <a href="#" @click="active = 'food'">
             <img src="@/assets/img/hometown/food.png" style="height: 40px; margin-bottom: 5px">
           </a>
           家乡美食
