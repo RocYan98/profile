@@ -51,7 +51,7 @@
         <el-table-column
           prop="cname"
           label="姓名"
-          :show-overflow-tooltip="true">
+          width="200">
         </el-table-column>
         <el-table-column
           prop="ename"
@@ -71,7 +71,7 @@
         <el-table-column
           prop="email"
           label="邮箱"
-          width="200">
+          :show-overflow-tooltip="true">
         </el-table-column>
         <el-table-column
           label="操作"

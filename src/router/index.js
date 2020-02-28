@@ -87,6 +87,13 @@ const routes = [
         meta: {
           title: "Roc | 用户管理"
         }
+      },
+      {
+        path: '/backstage/edu',
+        component: () => import("@/views/back/edu/Edu"),
+        meta: {
+          title: "Roc | 教育信息"
+        }
       }
     ]
   },
