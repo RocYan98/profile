@@ -3,13 +3,13 @@
     <div class="nav">
       <div class="nav-items">
         <div class="a" :class="{'active': active == 'attraction'}">
-          <a href="#" @click="active = 'attraction'">
+          <a href="#" @click="toAttr">
             <img src="@/assets/img/hometown/attraction.png" style="height: 40px; margin-bottom: 5px">
           </a>
           旅游景点
         </div>
         <div class="a" :class="{'active': active == 'food'}">
-          <a href="#" @click="active = 'food'">
+          <a href="#" @click="toFood">
             <img src="@/assets/img/hometown/food.png" style="height: 40px; margin-bottom: 5px">
           </a>
           家乡美食
@@ -49,15 +49,7 @@
       return {
         active: "attraction",
         attractions: [],
-        foods: [{
-          title: "test",
-          text: "test",
-          pic: "http://oss.rocyan.com/javaweb/1582818488279.jpg"
-        }, {
-          title: "test",
-          text: "test",
-          pic: "http://oss.rocyan.com/javaweb/1582818506241.jpg"
-        }]
+        foods: []
       }
     },
     methods: {
@@ -74,6 +66,28 @@
               this.attractions = response.data.data.attractions;
             }
           });
+      },
+      getFood() {
+        this.axios.request({
+          method: "get",
+          url: "/food/info",
+          params: {
+            uid: this.$store.state.user.uid,
+          }
+        })
+          .then(response => {
+            if (response.data.code === 0) {
+              this.foods = response.data.data.food;
+            }
+          });
+      },
+      toAttr() {
+        this.active = "attraction";
+        this.getAttr();
+      },
+      toFood() {
+        this.active = "food";
+        this.getFood();
       }
     }
   }
