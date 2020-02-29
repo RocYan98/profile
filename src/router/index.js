@@ -78,23 +78,37 @@ const routes = [
         path: '/backstage/message',
         component: () => import("@/views/back/message/Message"),
         meta: {
-          title: "Roc | 留言管理"
+          title: "Roc | 留言信息管理"
         }
       },
       {
         path: '/backstage/user',
         component: () => import("@/views/back/user/User"),
         meta: {
-          title: "Roc | 用户管理"
+          title: "Roc | 用户信息管理"
         }
       },
       {
         path: '/backstage/edu',
         component: () => import("@/views/back/edu/Edu"),
         meta: {
-          title: "Roc | 教育信息"
+          title: "Roc | 教育信息管理"
         }
-      }
+      },
+      {
+        path: '/backstage/attraction',
+        component: () => import("@/views/back/hometown/attraction"),
+        meta: {
+          title: "Roc | 家乡景点管理"
+        }
+      },
+      {
+        path: '/backstage/food',
+        component: () => import("@/views/back/hometown/food"),
+        meta: {
+          title: "Roc | 家乡美食管理"
+        }
+      },
     ]
   },
 ]

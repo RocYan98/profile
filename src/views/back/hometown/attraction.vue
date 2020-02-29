@@ -12,20 +12,20 @@
         <el-button type="primary" size="small" @click="openItem">添加</el-button>
 
         <el-dialog title="个人信息" :visible.sync="addFormVisible" width="30%" @close="closeItem">
-          <el-form :model="editForm" status-icon :rules="rules" ref="editForm">
-            <el-form-item label="学号" :label-width="formLabelWidth" prop="uid">
+          <el-form :model="editForm">
+            <el-form-item label="学号" :label-width="formLabelWidth">
               <el-input v-model="editForm.uid" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="用户名" :label-width="formLabelWidth" prop="username">
-              <el-input v-model="editForm.username" autocomplete="off"></el-input>
+            <el-form-item label="标题" :label-width="formLabelWidth">
+              <el-input v-model="editForm.title" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="密码" :label-width="formLabelWidth" prop="pwd">
-              <el-input v-model="editForm.pwd" autocomplete="off"></el-input>
+            <el-form-item label="内容" :label-width="formLabelWidth">
+              <el-input v-model="editForm.text" autocomplete="off"></el-input>
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
             <el-button @click="addFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="addItem('editForm')">确 定</el-button>
+            <el-button type="primary" @click="addItem">确 定</el-button>
           </div>
         </el-dialog>
       </div>
@@ -49,28 +49,13 @@
           width="200">
         </el-table-column>
         <el-table-column
-          prop="cname"
-          label="姓名"
+          prop="title"
+          label="标题"
           width="200">
         </el-table-column>
         <el-table-column
-          prop="ename"
-          label="英文名"
-          width="200">
-        </el-table-column>
-        <el-table-column
-          prop="sex"
-          label="性别"
-          width="200">
-        </el-table-column>
-        <el-table-column
-          prop="cls"
-          label="班级"
-          width="200">
-        </el-table-column>
-        <el-table-column
-          prop="email"
-          label="邮箱"
+          prop="text"
+          label="内容"
           :show-overflow-tooltip="true">
         </el-table-column>
         <el-table-column
@@ -81,25 +66,16 @@
             <el-button type="primary" size="small" @click="openEdit(scope.row)" style="margin-right: 10px">编辑 <span
               class="el-icon-edit-outline"></span></el-button>
 
-            <el-dialog title="个人信息" :visible.sync="editFormVisible" width="30%" @close="getPage">
+            <el-dialog title="留言信息" :visible.sync="editFormVisible" width="30%" @close="getPage">
               <el-form :model="editForm">
                 <el-form-item label="学号" :label-width="formLabelWidth">
                   <el-input v-model="editForm.uid" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="姓名" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.cname" autocomplete="off"></el-input>
+                <el-form-item label="标题" :label-width="formLabelWidth">
+                  <el-input v-model="editForm.title" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="英文名" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.ename" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="性别" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.sex" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="班级" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.cls" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="邮箱" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.email" autocomplete="off"></el-input>
+                <el-form-item label="内容" :label-width="formLabelWidth">
+                  <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 6}" v-model="editForm.text" autocomplete="off"></el-input>
                 </el-form-item>
               </el-form>
               <div slot="footer" class="dialog-footer">
@@ -131,7 +107,7 @@
 
 <script>
   export default {
-    name: "User",
+    name: "attraction",
     data() {
       return {
         tableData: [],
@@ -149,27 +125,12 @@
         editFormVisible: false,
         editForm: {
           uid: '',
-          username: '',
-          pwd: '',
-          cname: '',
-          ename: '',
-          sex: '',
-          cls: '',
-          email: '',
+          title: '',
+          text: ''
         },
 
         addFormVisible: false,
-        rules: {
-          uid: [
-            {required: true, message: '请输入学号', trigger: 'blur'}
-          ],
-          username: [
-            {required: true, message: '请输入用户名', trigger: 'blur'}
-          ],
-          pwd: [
-            {required: true, message: '请输入密码', trigger: 'blur'}
-          ],
-        }
+
       }
     },
     created() {
@@ -187,7 +148,7 @@
       getPage() {
         this.axios({
           method: "get",
-          url: "/user/page",
+          url: "/attr/page",
           params: {
             current: this.current,
             size: this.size,
@@ -213,7 +174,7 @@
         }).then(() => {
           this.axios.request({
             method: "post",
-            url: "/user/update",
+            url: "/attr/update",
             data: this.editForm
           })
             .then(response => {
@@ -238,7 +199,7 @@
         }).then(() => {
           this.axios.request({
             method: "post",
-            url: "/user/deleteOne",
+            url: "/attr/deleteOne",
             data: item,
           })
             .then(response => {
@@ -255,7 +216,7 @@
       },
       deleteSelected() {
         let list = [];
-        this.multipleSelection.forEach(element => list.push(element.uid));
+        this.multipleSelection.forEach(element => list.push(element.aid));
         if (list.length === 0) return;
         this.$confirm('确定删除所选项?', '提示', {
           confirmButtonText: '确定',
@@ -264,7 +225,7 @@
         }).then(() => {
           this.axios.request({
             method: "post",
-            url: "/user/deleteSelected",
+            url: "/attr/deleteSelected",
             data: list,
           })
             .then(response => {
@@ -280,50 +241,46 @@
         });
       },
 
+
+
+
       openItem() {
         this.editForm.uid = '';
-        this.editForm.username = '';
-        this.editForm.pwd = '';
+        this.editForm.title = '';
+        this.editForm.text = '';
         this.addFormVisible = true;
       },
       closeItem() {
         this.editForm.uid = '';
-        this.editForm.username = '';
-        this.editForm.pwd = '';
+        this.editForm.title = '';
+        this.editForm.text = '';
       },
-      addItem(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.$confirm('确定添加?', '提示', {
-              confirmButtonText: '确定',
-              cancelButtonText: '取消',
-              type: 'warning'
-            }).then(() => {
-              this.axios.request({
-                method: "post",
-                url: "/register",
-                data: this.editForm
-              })
-                .then(response => {
-                  if (response.data.code === 0) {
-                    this.editFormVisible = false;
-                    this.$message({
-                      type: 'success',
-                      message: "添加成功"
-                    });
-                    this.getPage();
-                    this.addFormVisible = false;
-                  } else {
-                    this.$alert(response.data.msg, '失败', {
-                      confirmButtonText: '确定',
-                    });
-                  }
-                })
-            });
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
+      addItem() {
+        this.$confirm('确定添加?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.axios.request({
+            method: "post",
+            url: "/attr/add",
+            data: this.editForm
+          })
+            .then(response => {
+              if (response.data.code === 0) {
+                this.editFormVisible = false;
+                this.$message({
+                  type: 'success',
+                  message: "添加成功"
+                });
+                this.getPage();
+                this.addFormVisible = false;
+              } else {
+                this.$alert(response.data.msg, '失败', {
+                  confirmButtonText: '确定',
+                });
+              }
+            })
         });
       }
     }
