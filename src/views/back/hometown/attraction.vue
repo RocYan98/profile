@@ -11,7 +11,7 @@
       <div style="width: 10%; display: flex; justify-content: flex-end; padding-right: 10px">
         <el-button type="primary" size="small" @click="openItem">添加</el-button>
 
-        <el-dialog title="个人信息" :visible.sync="addFormVisible" width="30%" @close="closeItem">
+        <el-dialog title="旅游景点" :visible.sync="addFormVisible" width="30%" @close="closeItem">
           <el-form :model="editForm">
             <el-form-item label="学号" :label-width="formLabelWidth">
               <el-input v-model="editForm.uid" autocomplete="off"></el-input>
@@ -78,7 +78,7 @@
             <el-button type="primary" size="small" @click="openEdit(scope.row)" style="margin-right: 10px">编辑 <span
               class="el-icon-edit-outline"></span></el-button>
 
-            <el-dialog title="留言信息" :visible.sync="editFormVisible" width="30%" @close="getPage">
+            <el-dialog title="旅游景点" :visible.sync="editFormVisible" width="30%" @close="getPage">
               <el-form :model="editForm">
                 <el-form-item label="学号" :label-width="formLabelWidth">
                   <el-input v-model="editForm.uid" autocomplete="off"></el-input>

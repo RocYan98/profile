@@ -57,7 +57,7 @@
             <el-button type="primary" size="small" @click="openEdit(scope.row)" style="margin-right: 10px">编辑 <span
               class="el-icon-edit-outline"></span></el-button>
 
-            <el-dialog title="留言信息" :visible.sync="editFormVisible" width="30%" @close="getPage">
+            <el-dialog title="教育信息" :visible.sync="editFormVisible" width="30%" @close="getPage">
               <el-form :model="editForm">
                 <el-form-item label="学号" :label-width="formLabelWidth">
                   <el-input v-model="editForm.uid" autocomplete="off" disabled></el-input>
