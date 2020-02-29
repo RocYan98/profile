@@ -18,7 +18,7 @@
     </div>
     <div class="bg">
       <div class="info">
-        <b style="font-size: 70px">黄岩</b>
+        <b style="font-size: 70px">家乡</b>
       </div>
     </div>
     <div class="box">

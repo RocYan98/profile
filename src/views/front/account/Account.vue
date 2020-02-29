@@ -50,7 +50,7 @@
           <el-dialog title="上传头像" :visible.sync="headFormVisible" width="30%">
             <el-form :model="head">
               <el-form-item :label-width="formLabelWidth"
-                            ref="uploadElement">
+                            ref="Element">
                 <el-upload ref="upload"
                            action="#"
                            accept="image/png,image/jpg,image/jpeg"
@@ -347,12 +347,6 @@
       },
 
       handleBeforeUpload(file) {
-        if (!(file.type === 'image/png' || file.type === 'image/jpg' || file.type === 'image/jpeg')) {
-          this.$alert('请上传格式为image/png, image/jpg, image/jpeg的图片', '警告', {
-            confirmButtonText: '确定'
-          });
-        }
-
         let size = file.size / 1024 / 1024 / 2;
         if (size > 2) {
           this.$alert('图片大小必须小于2M', '警告', {
@@ -360,31 +354,20 @@
           });
         }
 
-        let fd = new FormData();//通过form数据格式来传
-        fd.append("file", file, file.name); //传文件
-        this.instance.post('/user/updateHead', fd)
+        let formData = new FormData();//通过form数据格式来传
+        formData.append("file", file, file.name); //传文件
+        formData.append("uid", this.$store.state.user.uid);
+        this.instance.request({
+          method: 'post',
+          url: '/user/updateHead',
+          data: formData,
+        })
           .then((response) => {
             if (response.data.code === 0) {
-              this.axios.request({
-                url: "/user/updateDB",
-                method: "get",
-                params: {
-                  uid: this.$store.state.user.uid,
-                  url: response.data.data,
-                }
-              })
-                .then(res => {
-                  if (res.data.code === 0) {
-                    this.$alert('上传成功', '成功', {
-                      confirmButtonText: '确定'
-                    });
-                    this.$store.commit('updateUser', res.data.data);
-                  } else {
-                    this.$alert('上传失败', '失败', {
-                      confirmButtonText: '确定'
-                    });
-                  }
-                })
+              this.$alert('上传成功', '成功', {
+                confirmButtonText: '确定'
+              });
+              this.$store.commit('updateUser', response.data.data);
             } else {
               this.$alert('上传失败', '失败', {
                 confirmButtonText: '确定'

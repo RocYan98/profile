@@ -22,10 +22,22 @@
             <el-form-item label="内容" :label-width="formLabelWidth">
               <el-input v-model="editForm.text" autocomplete="off"></el-input>
             </el-form-item>
+            <el-upload
+              ref="upload"
+              class="upload-demo"
+              action="#"
+              accept="image/png,image/jpg,image/jpeg"
+              list-type="picture"
+              :auto-upload="false"
+              :before-upload="beforeUpload"
+              :limit="1">
+              <el-button size="small" type="primary">点击上传</el-button>
+              <div slot="tip" class="el-upload__tip">只能上传一张jpg/png文件，且不超过2MB</div>
+            </el-upload>
           </el-form>
           <div slot="footer" class="dialog-footer">
             <el-button @click="addFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="addItem">确 定</el-button>
+            <el-button type="primary" @click="addFile">确 定</el-button>
           </div>
         </el-dialog>
       </div>
@@ -75,12 +87,34 @@
                   <el-input v-model="editForm.title" autocomplete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="内容" :label-width="formLabelWidth">
-                  <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 6}" v-model="editForm.text" autocomplete="off"></el-input>
+                  <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 6}" v-model="editForm.text"
+                            autocomplete="off"></el-input>
                 </el-form-item>
+                <el-form-item label="图片" :label-width="formLabelWidth">
+                  <div class="demo-image__preview">
+                    <el-image
+                      style="width: 150px; height: 100px"
+                      :src="editForm.pic"
+                    >
+                    </el-image>
+                  </div>
+                </el-form-item>
+                <el-upload
+                  ref="upload"
+                  class="upload-demo"
+                  action="#"
+                  accept="image/png,image/jpg,image/jpeg"
+                  list-type="picture"
+                  :auto-upload="false"
+                  :before-upload="handleBeforeUpload"
+                  :limit="1">
+                  <el-button size="small" type="primary">点击上传</el-button>
+                  <div slot="tip" class="el-upload__tip">只能上传一张jpg/png文件，且不超过2MB</div>
+                </el-upload>
               </el-form>
               <div slot="footer" class="dialog-footer">
                 <el-button @click="editFormVisible = false">取 消</el-button>
-                <el-button type="primary" @click="commitEdit">确 定</el-button>
+                <el-button type="primary" @click="uploadFile">确 定</el-button>
               </div>
             </el-dialog>
 
@@ -124,10 +158,12 @@
         formLabelWidth: "80px",
         editFormVisible: false,
         editForm: {
+          fid: -1,
           uid: '',
           title: '',
-          text: ''
+          text: '',
         },
+        flag: 0,
 
         addFormVisible: false,
 
@@ -165,29 +201,6 @@
       openEdit(val) {
         this.editFormVisible = true;
         this.editForm = val;
-      },
-      commitEdit() {
-        this.$confirm('确定修改?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.axios.request({
-            method: "post",
-            url: "/food/update",
-            data: this.editForm
-          })
-            .then(response => {
-              if (response.data.code === 0) {
-                this.editFormVisible = false;
-                this.$message({
-                  type: 'success',
-                  message: response.data.msg
-                });
-                this.getPage()
-              }
-            })
-        });
       },
 
 
@@ -242,8 +255,6 @@
       },
 
 
-
-
       openItem() {
         this.editForm.uid = '';
         this.editForm.title = '';
@@ -255,34 +266,93 @@
         this.editForm.title = '';
         this.editForm.text = '';
       },
-      addItem() {
-        this.$confirm('确定添加?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.axios.request({
-            method: "post",
-            url: "/food/add",
-            data: this.editForm
+      //add
+      beforeUpload(file) {
+        if (this.flag === 1) return;
+        this.flag = 1;
+        if (file !== undefined) {
+          let size = file.size / 1024 / 1024 / 2;
+          if (size > 2) {
+            this.$alert('图片大小必须小于2M', '警告', {
+              confirmButtonText: '确定'
+            });
+          }
+        }
+
+        let formData = new FormData();
+        formData.append("file", file);
+        formData.append("fid", this.editForm.fid);
+        formData.append("uid", this.editForm.uid);
+        formData.append("title", this.editForm.title);
+        formData.append("text", this.editForm.text);
+        this.instance.request({
+          method: 'post',
+          url: '/food/add',
+          data: formData,
+        })
+          .then((response) => {
+            if (response.data.code === 0) {
+              this.$alert('添加成功', '成功', {
+                confirmButtonText: '确定'
+              });
+              this.getPage();
+              this.addFormVisible = false;
+            } else {
+              this.$alert(response.data.msg, '失败', {
+                confirmButtonText: '确定'
+              });
+            }
           })
-            .then(response => {
-              if (response.data.code === 0) {
-                this.editFormVisible = false;
-                this.$message({
-                  type: 'success',
-                  message: "添加成功"
-                });
-                this.getPage();
-                this.addFormVisible = false;
-              } else {
-                this.$alert(response.data.msg, '失败', {
-                  confirmButtonText: '确定',
-                });
-              }
-            })
-        });
+      },
+
+      handleBeforeUpload(file) {
+        if (this.flag === 1) return;
+        this.flag = 1;
+        if (file !== undefined) {
+          let size = file.size / 1024 / 1024 / 2;
+          if (size > 2) {
+            this.$alert('图片大小必须小于2M', '警告', {
+              confirmButtonText: '确定'
+            });
+          }
+        }
+
+        let formData = new FormData();
+        formData.append("file", file);
+        formData.append("fid", this.editForm.fid);
+        formData.append("uid", this.editForm.uid);
+        formData.append("title", this.editForm.title);
+        formData.append("text", this.editForm.text);
+        this.instance.request({
+          method: 'post',
+          url: '/food/update',
+          data: formData,
+        })
+          .then((response) => {
+            if (response.data.code === 0) {
+              this.$alert('更新成功', '成功', {
+                confirmButtonText: '确定'
+              });
+              this.getPage();
+              this.editFormVisible = false;
+            } else {
+              this.$alert(response.data.msg, '失败', {
+                confirmButtonText: '确定'
+              });
+            }
+          })
+      },
+      uploadFile() {
+        this.$refs.upload.submit();
+        this.handleBeforeUpload();
+        this.flag = 0;
+      },
+      addFile() {
+        this.$refs.upload.submit();
+        this.beforeUpload();
+        this.flag = 0;
       }
+
     }
   }
 </script>
