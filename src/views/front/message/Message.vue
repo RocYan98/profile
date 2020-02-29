@@ -144,7 +144,7 @@
   .right {
     width: 70%;
     height: 80%;
-    background: rgba(0, 102, 200, 0.2);
+    background: rgba(144, 144, 144, 0.13);
     display: flex;
     flex-direction: column;
     justify-content: center;

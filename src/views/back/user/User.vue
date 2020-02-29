@@ -46,27 +46,27 @@
         <el-table-column
           prop="uid"
           label="学号"
-          width="200">
+          width="150">
         </el-table-column>
         <el-table-column
           prop="cname"
           label="姓名"
-          width="200">
+          width="150">
         </el-table-column>
         <el-table-column
           prop="ename"
           label="英文名"
-          width="200">
+          width="150">
         </el-table-column>
         <el-table-column
           prop="sex"
           label="性别"
-          width="200">
+          width="100">
         </el-table-column>
         <el-table-column
           prop="cls"
           label="班级"
-          width="200">
+          width="100">
         </el-table-column>
         <el-table-column
           prop="email"
