@@ -141,7 +141,7 @@
 
 <script>
   export default {
-    name: "food",
+    name: "cele",
     data() {
       return {
         tableData: [],
@@ -158,7 +158,7 @@
         formLabelWidth: "80px",
         editFormVisible: false,
         editForm: {
-          fid: -1,
+          cid: -1,
           uid: '',
           title: '',
           text: '',
@@ -184,7 +184,7 @@
       getPage() {
         this.axios({
           method: "get",
-          url: "/food/page",
+          url: "/cele/page",
           params: {
             current: this.current,
             size: this.size,
@@ -212,7 +212,7 @@
         }).then(() => {
           this.axios.request({
             method: "post",
-            url: "/food/deleteOne",
+            url: "/cele/deleteOne",
             data: item,
           })
             .then(response => {
@@ -229,7 +229,7 @@
       },
       deleteSelected() {
         let list = [];
-        this.multipleSelection.forEach(element => list.push(element.fid));
+        this.multipleSelection.forEach(element => list.push(element.cid));
         if (list.length === 0) return;
         this.$confirm('确定删除所选项?', '提示', {
           confirmButtonText: '确定',
@@ -238,7 +238,7 @@
         }).then(() => {
           this.axios.request({
             method: "post",
-            url: "/food/deleteSelected",
+            url: "/cele/deleteSelected",
             data: list,
           })
             .then(response => {
@@ -281,13 +281,13 @@
 
         let formData = new FormData();
         formData.append("file", file);
-        formData.append("fid", this.editForm.fid);
+        formData.append("cid", this.editForm.cid);
         formData.append("uid", this.editForm.uid);
         formData.append("title", this.editForm.title);
         formData.append("text", this.editForm.text);
         this.instance.request({
           method: 'post',
-          url: '/food/add',
+          url: '/cele/add',
           data: formData,
         })
           .then((response) => {
@@ -319,13 +319,13 @@
 
         let formData = new FormData();
         formData.append("file", file);
-        formData.append("fid", this.editForm.fid);
+        formData.append("cid", this.editForm.cid);
         formData.append("uid", this.editForm.uid);
         formData.append("title", this.editForm.title);
         formData.append("text", this.editForm.text);
         this.instance.request({
           method: 'post',
-          url: '/food/update',
+          url: '/cele/update',
           data: formData,
         })
           .then((response) => {

@@ -14,6 +14,12 @@
           </a>
           家乡美食
         </div>
+        <div class="a" :class="{'active': active == 'cele'}">
+          <a href="#" @click="toCele">
+            <img src="@/assets/img/hometown/cele.png" style="height: 40px; margin-bottom: 5px">
+          </a>
+          文化名人
+        </div>
       </div>
     </div>
     <div class="bg">
@@ -22,14 +28,19 @@
       </div>
     </div>
     <div class="box">
-      <div v-if="active == 'attraction'" class="msg">
+      <div v-if="active === 'attraction'" class="msg">
         <div v-for="attraction in attractions" :key="attraction.title" style="width: 100%;">
-          <home-info :title="attraction.title" :text="attraction.text" :pic="attraction.pic"></home-info>
+          <home-info :title="attraction.title" :text="attraction.text" :pic="attraction.pic"/>
         </div>
       </div>
-      <div v-else class="msg">
+      <div v-if="active === 'food'" class="msg">
         <div v-for="food in foods" :key="food.title" style="width: 100%;">
-          <home-info :title="food.title" :text="food.text" :pic="food.pic"></home-info>
+          <home-info :title="food.title" :text="food.text" :pic="food.pic"/>
+        </div>
+      </div>
+      <div v-if="active === 'cele'" class="msg">
+        <div v-for="c in cele" :key="c.title" style="width: 100%;">
+          <home-info :title="c.title" :text="c.text" :pic="c.pic" :iscele="1"/>
         </div>
       </div>
     </div>
@@ -49,7 +60,8 @@
       return {
         active: "attraction",
         attractions: [],
-        foods: []
+        foods: [],
+        cele: [],
       }
     },
     methods: {
@@ -81,6 +93,20 @@
             }
           });
       },
+      getCele() {
+        this.axios.request({
+          method: "get",
+          url: "cele/info",
+          params: {
+            uid: this.$store.state.user.uid,
+          }
+        })
+          .then(response => {
+            if (response.data.code === 0) {
+              this.cele = response.data.data.cele;
+            }
+          })
+      },
       toAttr() {
         this.active = "attraction";
         this.getAttr();
@@ -88,6 +114,10 @@
       toFood() {
         this.active = "food";
         this.getFood();
+      },
+      toCele() {
+        this.active = "cele";
+        this.getCele();
       }
     }
   }

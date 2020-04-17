@@ -21,6 +21,7 @@
       </template>
       <el-menu-item index="/backstage/attraction" @click="toUrl('attraction')">旅游景点</el-menu-item>
       <el-menu-item index="/backstage/food" @click="toUrl('food')">家乡美食</el-menu-item>
+      <el-menu-item index="/backstage/cele" @click="toUrl('cele')">文化名人</el-menu-item>
     </el-submenu>
     <el-menu-item index="/backstage/message" @click="toUrl('message')">
       <i class="el-icon-notebook-1"></i>

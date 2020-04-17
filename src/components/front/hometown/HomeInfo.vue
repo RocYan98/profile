@@ -1,6 +1,6 @@
 <template>
   <div class="outbox">
-    <div style="width: 30%; margin-right: 100px">
+    <div :class="iscele === 1 ? 'is-cele' : 'else'">
       <div class="title">
         {{ title }}
       </div>
@@ -18,7 +18,7 @@
 <script>
   export default {
     name: "HomeInfo",
-    props: ['title', 'text', 'pic']
+    props: ['title', 'text', 'pic', 'iscele']
   }
 </script>
 
@@ -51,6 +51,16 @@
     margin: 30px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+  }
+
+  .is-cele {
+    width: 100%;
+    margin-right: 100px;
+  }
+
+  .else {
+    width: 30%;
+    margin-right: 100px;
   }
 
 </style>

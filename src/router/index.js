@@ -109,6 +109,13 @@ const routes = [
           title: "Roc | 家乡美食管理"
         }
       },
+      {
+        path: '/backstage/cele',
+        component: () => import("@/views/back/hometown/cele"),
+        meta: {
+          title: "Roc | 家乡文化管理"
+        }
+      }
     ]
   },
 ]
