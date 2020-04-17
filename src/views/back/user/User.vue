@@ -5,7 +5,7 @@
         <el-button type="danger" size="small" @click="deleteSelected">一键删除</el-button>
       </div>
       <div style="width: 80%">
-        <el-input v-model="search" size="small" placeholder="输入关键字搜索" style="width: 20%;margin-right: 10px"></el-input>
+        <el-input v-model="search" size="small" placeholder="输入关键字搜索" style="width: 20%;margin-right: 10px"/>
         <el-button type="primary" size="small" @click="getPage">搜索</el-button>
       </div>
       <div style="width: 10%; display: flex; justify-content: flex-end; padding-right: 10px">
@@ -14,13 +14,13 @@
         <el-dialog title="个人信息" :visible.sync="addFormVisible" width="30%" @close="closeItem">
           <el-form :model="editForm" status-icon :rules="rules" ref="editForm">
             <el-form-item label="学号" :label-width="formLabelWidth" prop="uid">
-              <el-input v-model="editForm.uid" autocomplete="off"></el-input>
+              <el-input v-model="editForm.uid" autocomplete="off"/>
             </el-form-item>
             <el-form-item label="用户名" :label-width="formLabelWidth" prop="username">
-              <el-input v-model="editForm.username" autocomplete="off"></el-input>
+              <el-input v-model="editForm.username" autocomplete="off"/>
             </el-form-item>
             <el-form-item label="密码" :label-width="formLabelWidth" prop="pwd">
-              <el-input v-model="editForm.pwd" autocomplete="off"></el-input>
+              <el-input v-model="editForm.pwd" autocomplete="off"/>
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
@@ -37,7 +37,6 @@
         ref="multipleTable"
         :data="tableData"
         tooltip-effect="dark"
-        style="width: 100%"
         @selection-change="handleSelectionChange">
         <el-table-column
           type="selection"
@@ -79,27 +78,27 @@
 
           <template slot-scope="scope">
             <el-button type="primary" size="small" @click="openEdit(scope.row)" style="margin-right: 10px">编辑 <span
-              class="el-icon-edit-outline"></span></el-button>
+              class="el-icon-edit-outline"/></el-button>
 
             <el-dialog title="个人信息" :visible.sync="editFormVisible" width="30%" @close="getPage">
               <el-form :model="editForm">
                 <el-form-item label="学号" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.uid" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.uid" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item label="姓名" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.cname" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.cname" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item label="英文名" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.ename" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.ename" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item label="性别" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.sex" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.sex" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item label="班级" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.cls" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.cls" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item label="邮箱" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.email" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.email" autocomplete="off"/>
                 </el-form-item>
               </el-form>
               <div slot="footer" class="dialog-footer">
@@ -109,7 +108,7 @@
             </el-dialog>
 
 
-            <el-button type="danger" size="small" @click="deleteItem(scope.row)">删除 <span class="el-icon-close"></span>
+            <el-button type="danger" size="small" @click="deleteItem(scope.row)">删除 <span class="el-icon-close"/>
             </el-button>
           </template>
         </el-table-column>
@@ -142,7 +141,7 @@
         //page
         current: 1,
         total: 0,
-        size: 10,
+        size: 6,
 
         //editForm
         formLabelWidth: "80px",

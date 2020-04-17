@@ -49,7 +49,6 @@
         ref="multipleTable"
         :data="tableData"
         tooltip-effect="dark"
-        style="width: 100%"
         @selection-change="handleSelectionChange">
         <el-table-column
           type="selection"
@@ -152,7 +151,7 @@
         //page
         current: 1,
         total: 0,
-        size: 10,
+        size: 6,
 
         //editForm
         formLabelWidth: "80px",

@@ -4,7 +4,7 @@
       <div style="width: 10%; padding-left: 10px">
       </div>
       <div style="width: 80%">
-        <el-input v-model="search" size="small" placeholder="输入关键字搜索" style="width: 20%;margin-right: 10px"></el-input>
+        <el-input v-model="search" size="small" placeholder="输入关键字搜索" style="width: 20%;margin-right: 10px"/>
         <el-button type="primary" size="small" @click="getPage">搜索</el-button>
       </div>
       <!--      <div style="width: 10%; display: flex; justify-content: flex-end; padding-right: 10px">-->
@@ -18,7 +18,6 @@
         ref="multipleTable"
         :data="tableData"
         tooltip-effect="dark"
-        style="width: 100%"
         @selection-change="handleSelectionChange">
         <el-table-column
           type="selection"
@@ -55,24 +54,24 @@
 
           <template slot-scope="scope">
             <el-button type="primary" size="small" @click="openEdit(scope.row)" style="margin-right: 10px">编辑 <span
-              class="el-icon-edit-outline"></span></el-button>
+              class="el-icon-edit-outline"/></el-button>
 
             <el-dialog title="教育信息" :visible.sync="editFormVisible" width="30%" @close="getPage">
               <el-form :model="editForm">
                 <el-form-item label="学号" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.uid" autocomplete="off" disabled></el-input>
+                  <el-input v-model="editForm.uid" autocomplete="off" disabled/>
                 </el-form-item>
                 <el-form-item label="年段" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.sta" autocomplete="off" disabled></el-input>
+                  <el-input v-model="editForm.sta" autocomplete="off" disabled/>
                 </el-form-item>
                 <el-form-item label="地区" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.pos" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.pos" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item label="学校" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.title" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.title" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item label="网站" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.web" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.web" autocomplete="off"/>
                 </el-form-item>
               </el-form>
               <div slot="footer" class="dialog-footer">
@@ -113,7 +112,7 @@
         //page
         current: 1,
         total: 0,
-        size: 10,
+        size: 6,
 
         //editForm
         formLabelWidth: "80px",

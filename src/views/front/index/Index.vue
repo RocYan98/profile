@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <index-body name="webstorm" title="WebStorm"></index-body>
-    <index-body name="idea" bgc="#3b3e43" title="IDEA"></index-body>
-    <index-body name="pycharm" title="PyCharm"></index-body>
-    <index-body name="clion" bgc="#3b3e43" title="CLion"></index-body>
+    <index-body name="webstorm" title="WebStorm"/>
+    <index-body name="idea" bgc="#3b3e43" title="IDEA"/>
+    <index-body name="pycharm" title="PyCharm"/>
+    <index-body name="clion" bgc="#3b3e43" title="CLion"/>
   </div>
 </template>
 

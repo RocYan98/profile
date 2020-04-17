@@ -5,7 +5,7 @@
         <el-button type="danger" size="small" @click="deleteSelected">一键删除</el-button>
       </div>
       <div style="width: 80%">
-        <el-input v-model="search" size="small" placeholder="输入关键字搜索" style="width: 20%;margin-right: 10px"></el-input>
+        <el-input v-model="search" size="small" placeholder="输入关键字搜索" style="width: 20%;margin-right: 10px"/>
         <el-button type="primary" size="small" @click="getPage">搜索</el-button>
       </div>
       <!--      <div style="width: 10%; display: flex; justify-content: flex-end; padding-right: 10px">-->
@@ -19,7 +19,6 @@
         ref="multipleTable"
         :data="tableData"
         tooltip-effect="dark"
-        style="width: 100%"
         @selection-change="handleSelectionChange">
         <el-table-column
           type="selection"
@@ -46,15 +45,15 @@
 
           <template slot-scope="scope">
             <el-button type="primary" size="small" @click="openEdit(scope.row)" style="margin-right: 10px">编辑 <span
-              class="el-icon-edit-outline"></span></el-button>
+              class="el-icon-edit-outline"/></el-button>
 
             <el-dialog title="留言信息" :visible.sync="editFormVisible" width="30%" @close="getPage">
               <el-form :model="editForm">
                 <el-form-item label="姓名" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.name" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.name" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item label="内容" :label-width="formLabelWidth">
-                  <el-input v-model="editForm.msg" autocomplete="off"></el-input>
+                  <el-input v-model="editForm.msg" autocomplete="off"/>
                 </el-form-item>
               </el-form>
               <div slot="footer" class="dialog-footer">
@@ -64,7 +63,7 @@
             </el-dialog>
 
 
-            <el-button type="danger" size="small" @click="deleteItem(scope.row)">删除 <span class="el-icon-close"></span>
+            <el-button type="danger" size="small" @click="deleteItem(scope.row)">删除 <span class="el-icon-close"/>
             </el-button>
           </template>
         </el-table-column>
@@ -98,7 +97,7 @@
         //page
         current: 1,
         total: 0,
-        size: 10,
+        size: 6,
 
         //editForm
         formLabelWidth: "80px",

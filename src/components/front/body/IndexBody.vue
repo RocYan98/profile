@@ -36,6 +36,5 @@
     /*position: relative;*/
     margin-top: 20px;
     height: 80%;
-    width: 60%;
   }
 </style>

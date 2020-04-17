@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="box">
       <div class="left">
-        <el-avatar :size="200" style="margin: 100px">
+        <el-avatar :size="200" style="margin-bottom: 20%">
           <img :src="user.head"/>
         </el-avatar>
         <div class="font">
@@ -72,6 +72,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.3);
     width: 30%;

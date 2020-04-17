@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <el-carousel :interval="4000" type="card" height="500px" interval="2000">
+    <el-carousel :interval="4000" type="card" height="400px" interval="2000">
       <el-carousel-item v-for="prize in prizes" :key="prize.pid">
         <img :src="require('@/assets/img/prize/' + prize.pid + '.jpg')">
         <div class="des">
