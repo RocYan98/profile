@@ -4,7 +4,7 @@
       17H034160236-严启鹏-17计算机H2-rocyan98@gmail.com
     </div>
     <div class="item">
-      Copyright © 2019 Roc Yan 保留所有权利。
+      Copyright © 2019-2020 Roc Yan 浙ICP备19051217号
     </div>
   </div>
 </template>
