@@ -9,11 +9,30 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 
 router.beforeEach((to, from, next) => {
-  /* 路由发生变化修改页面title */
+  if (to.path !== '/index' && to.path !== '/register' && to.path !== '/login' && to.path !== '/message') {
+    if (store.state.user === -1) {
+      next({
+        path: "/login"
+      })
+    }
+  }
+  if (to.matched.some(r => r.meta.requireAuth)) {
+    if (store.state.user.username === "yqp") {
+      if (to.meta.title) {
+        document.title = to.meta.title
+      }
+      next();
+    } else {
+      next({
+        path: "/index"
+      })
+    }
+  }
+
   if (to.meta.title) {
     document.title = to.meta.title
   }
-  next()
+  next();
 });
 
 Vue.config.productionTip = false;

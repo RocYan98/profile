@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div v-if="!this.$route.path.startsWith('/backstage')" style="display: flex; justify-content: space-between; align-items: center; width: 100%">
       <div style="width: 10%"></div>
-      <b>Java Web开发 -- 前台展示<el-button type="text" @click="toBack">进入后台管理界面</el-button></b>
+      <b>Java Web开发 -- 前台展示<el-button v-if="this.$store.state.user.username === 'yqp'" type="text" @click="toBack">进入后台管理界面</el-button></b>
       <div style="width: 10%">
         <el-button v-if="this.$store.state.user == -1" type="text" @click="open">登陆 / 注册</el-button>
         <div v-else>

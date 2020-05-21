@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import fr from "element-ui/src/locale/lang/fr";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
@@ -78,42 +77,48 @@ const routes = [
         path: '/backstage/message',
         component: () => import("@/views/back/message/Message"),
         meta: {
-          title: "Roc | 留言信息管理"
+          title: "Roc | 留言信息管理",
+          requireAuth: true
         }
       },
       {
         path: '/backstage/user',
         component: () => import("@/views/back/user/User"),
         meta: {
-          title: "Roc | 用户信息管理"
+          title: "Roc | 用户信息管理",
+          requireAuth: true
         }
       },
       {
         path: '/backstage/edu',
         component: () => import("@/views/back/edu/Edu"),
         meta: {
-          title: "Roc | 教育信息管理"
+          title: "Roc | 教育信息管理",
+          requireAuth: true
         }
       },
       {
         path: '/backstage/attraction',
         component: () => import("@/views/back/hometown/attraction"),
         meta: {
-          title: "Roc | 家乡景点管理"
+          title: "Roc | 家乡景点管理",
+          requireAuth: true
         }
       },
       {
         path: '/backstage/food',
         component: () => import("@/views/back/hometown/food"),
         meta: {
-          title: "Roc | 家乡美食管理"
+          title: "Roc | 家乡美食管理",
+          requireAuth: true
         }
       },
       {
         path: '/backstage/cele',
         component: () => import("@/views/back/hometown/cele"),
         meta: {
-          title: "Roc | 家乡文化管理"
+          title: "Roc | 家乡文化管理",
+          requireAuth: true
         }
       }
     ]
@@ -124,6 +129,6 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
-})
+});
 
 export default router
